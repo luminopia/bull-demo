@@ -29,11 +29,11 @@ Please refer to [package.json](./package.json) to learn how the yarn scripts are
 You'll need to run two daemons. Easiest is to create two separate shell sessions to run them.
 
 ```sh
-yarn start:backend
+yarn backend:start
 ```
 
 ```sh
-yarn start:runner
+yarn runner:start
 ```
 
 Now, you have a job runner daemon ready to consume jobs from Redis.
@@ -47,7 +47,7 @@ JOB_MESSAGE='hi, mom!' yarn queue:seed
 You should see something like the following:
 
 ```sh
-$ yarn start:runner
+$ yarn runner:start
 yarn run v1.9.4
 $ node daemon.js
 Processing from mainQueue
@@ -55,12 +55,10 @@ Received job 8 with data { message: 'hi, mom!' }
 ...
 ```
 
-### Flush queue
+### Web Server
 
-Redis is currently set to persist data, so restarting the redis instance will not drop your data.
-
-Instead, if for some reason you need to flush the queue to start over fresh, run:
+[Arena](https://github.com/bee-queue/arena) provides a nice web server that is available as a GUI on the state of the queue.
 
 ```sh
-yarn queue:flush
+yarn web:start
 ```

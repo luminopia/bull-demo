@@ -1,4 +1,4 @@
-const mainQueue = require('./mainQueue').mainQueue
+const mainQueue = require('./queue').createMainQueueClient()
 
 mainQueue.process((job) => {
   console.log('Received job', job.id, 'with data', job.data)
