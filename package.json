@@ -9,7 +9,9 @@
     "node": "^10.13.0"
   },
   "scripts": {
-    "start": "node daemon.js"
+    "start:backend": "redis-server redis.conf",
+    "start:runner": "node daemon.js",
+    "createJob": "node createJob.js"
   },
   "dependencies": {
     "bull": "^3.5.2"
