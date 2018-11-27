@@ -1,3 +1,10 @@
-var Queue = require('bull')
+const mainQueue = require('./mainQueue').mainQueue
 
-console.log('hello world!')
+mainQueue.process((job, done) => {
+  console.log('Received job', job.id, 'with data', job.data)
+
+  done()
+});
+
+mainQueue.isReady()
+  .then(() => console.log('Processing from mainQueue'))
