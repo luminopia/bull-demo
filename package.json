@@ -11,7 +11,8 @@
   "scripts": {
     "start:backend": "redis-server redis.conf",
     "start:runner": "node daemon.js",
-    "createJob": "node createJob.js"
+    "queue:seed": "node seed.js",
+    "queue:flush": "node flush.js"
   },
   "dependencies": {
     "bull": "^3.5.2"

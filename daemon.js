@@ -1,9 +1,9 @@
 const mainQueue = require('./mainQueue').mainQueue
 
-mainQueue.process((job, done) => {
+mainQueue.process((job) => {
   console.log('Received job', job.id, 'with data', job.data)
 
-  done()
+  if (job.data.type === 'bad') throw new Error("Received job with type 'bad'")
 });
 
 mainQueue.isReady()
