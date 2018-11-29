@@ -1,9 +1,9 @@
 const mainQueue = require('./queue').createMainQueueClient()
+const {handleJob, jobName} = require('./jobs/email')
 
-mainQueue.process((job) => {
-  console.log('Received job', job.id, 'with data', job.data)
-
-  if (job.data.type === 'bad') throw new Error("Received job with type 'bad'")
+mainQueue.process(jobName, (job) => {
+  console.log('Received job', jobName, job.id, 'with data', job.data)
+  handleJob(job)
 });
 
 mainQueue.isReady()
